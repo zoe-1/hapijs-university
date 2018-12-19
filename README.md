@@ -298,7 +298,7 @@ Please share if you know of other links and resources related to the subject.
 [Assignment6 Solution](https://github.com/zoe-1/university-rewrite/commit/739aec80cfb36c503bcf575fa0408170020b0df9)
 
 
-### [Assignment9] catabox-redis
+### [Assignment9] tokens cache -- catabox-redis
 
 In this lesson we will complete our authentication system. First, the bearer token
 cache is configured. When a user successfully authenticates, the auth-bearer-token 
@@ -307,17 +307,36 @@ Plus, user account data associated with the session is stored in the cache with 
 Then, the validateFunction for the auth-bearer-token strategy is modified to use the bearer token cache
 to validate if the received token is valid or not.
 
-* Set bearer-token in catbox-cache along with user record.
-* Expire the token after xxxxx time. Set expiresIn: value with server.options.
-* configure scopes ['admin', 'member'] for role based access.
+* catbox-redis ./lib/cache.js
+  - install [redisdb](http://redis.io)
+  - Set bearer-token in catbox-cache along with user record.
+  - Expire the token after xxxxx time. Set expiresIn: value with server.options.
+  - configure scopes ['admin', 'member'] for role based access.
+  - configure `.travis.yml` to use the server
+* authentication<br/>
+  Refactor authentication logic to:
+  - pre-empt one user from generating multiple tokens.
+  - upon successful authentication set token and user records in the cache.
+* `lib/authtoken.js`
+  - re-write the `defaultValidateFunc` to uses the catbox-redis cache
+    to validate tokens. 
+* server configuration options 
+  Configure the application options for `plugin` options to be set along with server options. 
 * create ./private point which requires admin scope for access.
-* Apply default authStrategy to ./private point.
-* pre-empt one user from generating multiple tokens.
-* Add `{ debug: false }` config for tests.
-  Otherwise, the tests print out hapi-auth-bearer-token error reports.
-  Originally, added in assignment9 but can go here.
+  - Apply default authStrategy to ./private point.
+* tests
+  - write 100% test coverage
+  - Add `{ debug: false }` config for tests.
+    Otherwise, the tests print out hapi-auth-bearer-token error reports.
+    Originally, added in assignment9 but can go here.
 
-[Assignment9 Solution](https://github.com/zoe-1/university-rewrite/commit/834a9a13bf566e4f387aa5751eda4927205f46af)
+* files
+  - authtoken.js
+  - cache.js
+
+[Lesson9 solution]()
+
+[Assignment9 Solution dev](https://github.com/zoe-1/university-rewrite/commit/834a9a13bf566e4f387aa5751eda4927205f46af)
 
 ### !!! below still being developed
 

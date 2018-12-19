@@ -59,3 +59,47 @@ describe('/version', () => {
         await server.stop();
     });
 });
+
+describe('/authenticate', () => {
+
+    it('succesfully authenticates', async () => {
+
+        const server = await University.init(internals.serverConfigs);
+
+        // curl -H "Content-Type: application/json" -X POST -d '{"username":"foofoo","password":"12345678"}' https://localhost:8000/authenticate
+
+        const request = { method: 'POST', url: '/authenticate', payload: { username: 'foofoo', password: 'password' } };
+
+        const res = await server.inject(request);
+
+        expect(res.result.message).to.equal('welcome');
+        expect(res.result.token.length).to.equal(36);
+        await server.stop();
+    });
+
+    it('fails to authenticate, bad password', async () => {
+
+        const server = await University.init(internals.serverConfigs);
+
+        const request = { method: 'POST', url: '/authenticate', payload: { username: 'foofoo', password: 'bad_password' } };
+
+        const res = await server.inject(request);
+
+        expect(res.result.error).to.equal('Unauthorized');
+        expect(res.result.message).to.equal('invalid credentials');
+        await server.stop();
+    });
+
+    it('fails to authenticate, bad username', async () => {
+
+        const server = await University.init(internals.serverConfigs);
+
+        const request = { method: 'POST', url: '/authenticate', payload: { username: 'bad_username', password: 'password' } };
+
+        const res = await server.inject(request);
+
+        expect(res.result.error).to.equal('Unauthorized');
+        expect(res.result.message).to.equal('invalid credentials');
+        await server.stop();
+    });
+});

@@ -277,9 +277,15 @@ Please share if you know of other links and resources related to the subject.
 
 [Assignment7 Solution dev](https://github.com/zoe-1/university-rewrite/commit/036ac9acadd8ff002b1029c4c19520d0512a0da4)
 
-### !!! below still being developed
+### [Assignment8]  /authenticate end point
+* build `./authenticate` route.
+* use prerequisite extensions to execute authentication logic.
+* Make a simple data store `database.js` to authenticate user records with.
+* No authStrategy applied to `/authenticate` point.
+* generate bearer-token upon successful authentication (cryptiles).
+* Use [Boom](https://www.npmjs.com/package/boom) to return errors.
 
-### [Assignment6]  /authenticate & /private end points
+### old [Assignment8]  /authenticate & /private end points
 * build `./authenticate` and `./private` points.
 * use prerequisite extensions to execute authentication logic.
 * Make simple database.js data store to authenticate user records with.
@@ -291,15 +297,29 @@ Please share if you know of other links and resources related to the subject.
 
 [Assignment6 Solution](https://github.com/zoe-1/university-rewrite/commit/739aec80cfb36c503bcf575fa0408170020b0df9)
 
-### [Assignment7] catabox-redis
-* generate bearer-token upon successful authentication (cryptiles).
+
+### [Assignment9] catabox-redis
+
+In this lesson we will complete our authentication system. First, the bearer token
+cache is configured. When a user successfully authenticates, the auth-bearer-token 
+generated for the session is stored in the cache [catabox-redis](https://github.com/hapijs/catbox-redis).
+Plus, user account data associated with the session is stored in the cache with the token. 
+Then, the validateFunction for the auth-bearer-token strategy is modified to use the bearer token cache
+to validate if the received token is valid or not.
+
 * Set bearer-token in catbox-cache along with user record.
 * Expire the token after xxxxx time. Set expiresIn: value with server.options.
 * configure scopes ['admin', 'member'] for role based access.
 * create ./private point which requires admin scope for access.
+* Apply default authStrategy to ./private point.
 * pre-empt one user from generating multiple tokens.
+* Add `{ debug: false }` config for tests.
+  Otherwise, the tests print out hapi-auth-bearer-token error reports.
+  Originally, added in assignment9 but can go here.
 
-[Assignment7 Solution](https://github.com/zoe-1/university-rewrite/commit/834a9a13bf566e4f387aa5751eda4927205f46af)
+[Assignment9 Solution](https://github.com/zoe-1/university-rewrite/commit/834a9a13bf566e4f387aa5751eda4927205f46af)
+
+### !!! below still being developed
 
 ### [Assignment8] confidence
 * Build confidence object in ./lib/configs.js

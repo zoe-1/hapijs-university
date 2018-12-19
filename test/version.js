@@ -22,6 +22,11 @@ internals.serverConfigs = {
             key: Fs.readFileSync('lib/certs/key.key'),
             cert: Fs.readFileSync('lib/certs/cert.crt')
         }
+    },
+    plugins: {
+        tokenCache: {
+            expiresIn: 50
+        }
     }
 };
 

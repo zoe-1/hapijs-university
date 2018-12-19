@@ -230,7 +230,7 @@ Assignment is based on original assignment3: [100% coverage](https://github.com/
   Methods used in the `/version` route will be stored here.
   Move the `/version` handler function to this file.
 * Note: this is a personal style preferrence.
-  Preferrence is to make a split screen view with: 
+  Preferrence is to make a split screen view with:
   - the screen on the left<br/>
     displays the routes `./lib/version.js`
   - the screen on the right<br/>
@@ -251,8 +251,8 @@ Assignment is based on original assignment3: [100% coverage](https://github.com/
   - valid token equals `1234574`
 * 100% tests coverage.<br/>
   Adjust `/version` tests for token authentication.
-  Test for passing and failing tokens. 
-  
+  Test for passing and failing tokens.
+
 Notice we have not created user authentication yet -- users have no way to log in.
 Tests for the assignment assume a valid `auth bearer token` for the user already exists.
 The focus is on getting `hapi auth bearer token` plugin installed and configured.
@@ -301,27 +301,33 @@ Please share if you know of other links and resources related to the subject.
 ### [Assignment9] tokens cache -- catabox-redis
 
 In this lesson we will complete our authentication system. First, the bearer token
-cache is configured. When a user successfully authenticates, the auth-bearer-token 
+cache is configured. When a user successfully authenticates, the auth-bearer-token
 generated for the session is stored in the cache [catabox-redis](https://github.com/hapijs/catbox-redis).
-Plus, user account data associated with the session is stored in the cache with the token. 
+Plus, user account data associated with the session is stored in the cache with the token.
 Then, the validateFunction for the auth-bearer-token strategy is modified to use the bearer token cache
 to validate if the received token is valid or not.
 
-* catbox-redis ./lib/cache.js
+* catbox-redis ./lib/tokencache.js
   - install [redisdb](http://redis.io)
+  - configure server to use catbox-redis. <br/>
+    See [hapi caching service](https://github.com/hapijs/catbox) and [catbox-redis](https://github.com/hapijs/catbox-redis) documentation.
   - Set bearer-token in catbox-cache along with user record.
   - Expire the token after xxxxx time. Set expiresIn: value with server.options.
   - configure scopes ['admin', 'member'] for role based access.
-  - configure `.travis.yml` to use the server
+  - configure `.travis.yml` to use the redis server
 * authentication<br/>
   Refactor authentication logic to:
   - pre-empt one user from generating multiple tokens.
   - upon successful authentication set token and user records in the cache.
+  - Relevate file: `lib/route-methods/authenticate.js`
 * `lib/authtoken.js`
   - re-write the `defaultValidateFunc` to uses the catbox-redis cache
-    to validate tokens. 
-* server configuration options 
-  Configure the application options for `plugin` options to be set along with server options. 
+    to validate tokens.
+* server configuration options
+  Configure the application options for `plugin` options to be set along with server options.
+  This allows for test configurations to set shorter token expiration times
+  so tokens made in previous test do not collide with the current test.
+
 * create ./private point which requires admin scope for access.
   - Apply default authStrategy to ./private point.
 * tests

@@ -1,52 +1,8 @@
 ### hapijs university
 
-A community learning experiment utilizing the distributed classroom.
-The idea is simple: use GitHub as a platform to teach group coding skills, use JavaScript and [hapijs](https://hapijs.com)
-to build web applications, operate such a distributed classroom and apply the pattern to other topics.
-
-University re-write in process because JavaScript, nodejs, and hapi have evolved.
-hapi v17 is out and fully [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) end-to-end.
-"It combines the latest technologies with a proven core that has been powering some of the world largest sites."
-See [hapi v17 release notes](https://github.com/hapijs/hapi/issues/3658) for all details.
-
-Lead Maintainer - [Jon Swenson](https://github.com/zoe-1)
-
-### What do I need to know?
-
-You should feel comfortable writing simple functions in JavaScript, working with GitHub, using basic git commands,
-have a basic familiarity with node, and be able to pick up new subjects by reading tutorials and documentation.
-
-### How to participate
-
-* <b>Individually</b>
-  Anyone is welcome to work individually on university assignments.  See list of assignments below.
-  To study solutions:
-  - use Github's [compare feature](https://help.github.com/articles/comparing-commits-across-time/) to
-    compare commits, branches, or tags across time. Use it to compare assignments and solutions.
-    Links to comparison views are provided for each solution.
-  - Read source code for each solution by clicking on the tagged solution. For example, v0.1.1 is assignment1's solution and
-    v0.1.2 is assignment2's solution. The format is: v0.1.X. 'X' is the assignment number.
-    Links to each solution below.
-  - Besides viewing solutions on github, clone the project, checkout solutions and study them on your own computer.
-
-* <b>Community Assignments</b>
-  Besides working individually on assignments. You are welcome
-  Watch the [issues list](https://github.com/hapijs/university/issues) for discussion about the next stages
-  of group development. You are welcome to participate. Group assignments will be tagged with the 'assignment' label
-  in the issues list.  Read more about [group assignments here.](guides/groupDevelopment.md) (community development)
-  * Write code fulfilling assignment requirements and submit a PR.
-    Read [pull requests](https://help.github.com/articles/using-pull-requests/) if you are unsure how to make a PR.
-  * After a PR is submitted, the community peer reviews the PR allowing us to learn from each other.
-
-Track development on the [issues list](https://github.com/hapijs/university/issues).
-
-### What you will learn
-
-You will learn the essential components needed to build hapi applications: authentication, validation, application architecture, and testing.
-Plus, we will delve into deeper topics like: bearer-tokens, caching, configuring for multiple environments,
-hapi process monitoring, the request lifecycle, and conclude with integrating graphql into a hapi application.
-
-[dependencies go show list](guides/dependencies.md)
+Use JavaScript and [hapijs](https://hapijs.com) to build web applications.
+See the essentials of how to build hapi applications: authentication, validation, application architecture, and testing.
+Plus, delve into deeper topics like: bearer-tokens, caching, the request lifecycle.
 
 ## Assignments and Solutions
 
@@ -204,7 +160,7 @@ Assignment is based on original assignment3: [100% coverage](https://github.com/
   See documentation for more about [server.app](https://hapijs.com/api#server.app)
 * Access the `request.server` property in the `./lib/version.js` handler to return the
   `server.app.version` and server.app.message values.
-* Note: The `server.app` property is useful to set the DB connection in. `server.app` properties
+* Note: The `server.app` property is useful to set a DB connection in. `server.app` properties
   are available wherever the `request.server` is exposed.
 
 [Compare Assignment4 Solution to Assignment3](https://github.com/hapijs/university/compare/03ca7d1ec0f7775f6c15533076e60e5ee19b6c72...5f341383016e44d582ab09911b86371b2ad1f6c5)<br/>

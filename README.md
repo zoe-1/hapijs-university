@@ -285,6 +285,7 @@ Please share if you know of other links and resources related to the subject.
 * generate bearer-token upon successful authentication (cryptiles).
 * Use [Boom](https://www.npmjs.com/package/boom) to return errors.
 
+[Lesson8 solution dev](https://github.com/zoe-1/university-dev/compare/v0.1.7...v0.1.8)
 [Compare Assignment8 Solution to Assignment7](https://github.com/hapijs/university/compare/v0.1.7...v0.1.8)<br/>
 
 

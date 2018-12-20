@@ -16,9 +16,8 @@ Second, create a basic hapi server on port 8000 which responds to /version reque
 `npm install --save hapi`<br/>
 
 
-[view assignment1 solution](https://github.com/hapijs/university/tree/v0.1.1)<br/>
 [compare assignment1 solution to start point](https://github.com/hapijs/university/compare/v0.1.0...v0.1.1)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;Above link is to: `https://github.com/zoe-1/university-dev/compare/v0.1.0...v0.1.1`.<br/>
+[view assignment1 solution](https://github.com/hapijs/university/tree/v0.1.1)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;Utilizes Github's [compare tags](https://help.github.com/articles/comparing-commits-across-time/) feature to view the solution.
 
 #### credits for assignment1
@@ -152,7 +151,7 @@ As always, ask for help and help others!
 [view assignment3 solution source](https://github.com/hapijs/university/tree/v0.1.3)<br/>
 
 #### Credits
-Assignment is based on original assignment3: [100% coverage](https://github.com/hapijs/university/issues/79).
+Assignment is based on original assignment3 and the discussion related to it: [100% coverage](https://github.com/hapijs/university/issues/79).
 
 ### [Assignment4] Use `server.app` properties
 
@@ -197,7 +196,7 @@ Assignment is based on original assignment3: [100% coverage](https://github.com/
 [Compare Assignment5 Solution to Assignment4](https://github.com/hapijs/university/compare/v0.1.4...v0.1.5)<br/>
 
 
-### [Assignment6] OK auth bearer tokens fun
+### [Assignment6] auth bearer tokens
 
 * add [hapi-auth-bearer-token](https://www.npmjs.com/package/hapi-auth-bearer-token)<br/>
   `npm install --save hapi-auth-bearer-token`
@@ -219,9 +218,8 @@ Please share if you know of other links and resources related to the subject.
 
 [Compare Assignment6 Solution to Assignment5](https://github.com/hapijs/university/compare/v0.1.5...v0.1.6)<br/>
 
-[Originally was Assignment4](https://github.com/hapijs/university/issues/118)<br/>
-[Assignment Solution development](https://github.com/zoe-1/university-rewrite/commit/697dee8e4b3b73bffbde93f4dcccaa015e157b11)
-
+#### Credits
+This assignment [originally was Assignment4](https://github.com/hapijs/university/issues/118)<br/>
 
 
 ### [Assignment7]  TLS
@@ -231,8 +229,6 @@ Please share if you know of other links and resources related to the subject.
 
 [Compare Assignment7 Solution to Assignment6](https://github.com/hapijs/university/compare/v0.1.6...v0.1.7)<br/>
 
-[Assignment7 Solution dev](https://github.com/zoe-1/university-rewrite/commit/036ac9acadd8ff002b1029c4c19520d0512a0da4)
-
 ### [Assignment8]  /authenticate end point
 * build `./authenticate` route.
 * use prerequisite extensions to execute authentication logic.
@@ -241,11 +237,7 @@ Please share if you know of other links and resources related to the subject.
 * generate bearer-token upon successful authentication (cryptiles).
 * Use [Boom](https://www.npmjs.com/package/boom) to return errors.
 
-[Lesson8 solution dev](https://github.com/zoe-1/university-dev/compare/v0.1.7...v0.1.8)
 [Compare Assignment8 Solution to Assignment7](https://github.com/hapijs/university/compare/v0.1.7...v0.1.8)<br/>
-
-
-[Assignment8 dev Solution](https://github.com/zoe-1/university-rewrite/commit/739aec80cfb36c503bcf575fa0408170020b0df9)
 
 
 ### [Assignment9] tokens cache -- catabox-redis
@@ -287,164 +279,6 @@ administrative user to access route data.
     Otherwise, the tests print out hapi-auth-bearer-token error reports.
     Originally, added in assignment9 but can go here.
 
-[Lesson9 solution dev](https://github.com/zoe-1/university-dev/compare/v0.1.8...v0.1.9)
 [Lesson9 solution](https://github.com/hapijs/university/compare/v0.1.8...v0.1.9)
 
-[Assignment9 Solution dev](https://github.com/zoe-1/university-rewrite/commit/834a9a13bf566e4f387aa5751eda4927205f46af)
 
-
-### !!! below still being developed
-
-### [Assignment8] confidence
-* Build confidence object in ./lib/configs.js
-* Configure the object to be filtered by the `env` criteria
-* (environment).
-The environments will be production, test, default.
-  - production: configurations for deployment.
-  - test: configs for testing.
-  - default: configs for running on local enviroment.
-* docs: https://github.com/hapijs/confidence
-* TLS and confidence:
-  - confidence manipulates the tls certs if they are
-    loaded in the Confidence object. To solve the issue
-    load tls certs into configs object after confidence
-    generates it.
-
-[Assignment8 Solution](https://github.com/zoe-1/university-rewrite/commit/c61e2f839f28d5681f3cf8a67d927b9bd6979532)
-
-### [Assignment9] good & lifecycle
-
-good hapi process monitoring & extending hapi request lifecycle
-
-- [] update to good v8.1.1
-   built this lesson using `good@8.0.0-rc1` before stable 8.1.1 released.
-  `npm i good@8.0.0-rc1`
-* configure good console to write log reports to a logfile.
-  Configure confidence file for good to log: test, production, and default.
-* Catch invalid attempts to access the ./private route.
-  Extend the `onPreResponse` step of the lifecycle for the ./private route.
-  When invalid tokens are used to access ./private, log the event to logfile.
-* Add `{ debug: false }` config to Confidence file for tests.
-  Otherwise, the tests print out hapi-auth-bearer-token error reports.
-
-[Assignment9 Solution](https://github.com/zoe-1/university-rewrite/commit/bf05c4b00194a30e9e86e6ebe6552298788a7d8b)
-
-### [Assignment10] refactor
-
--[] determine if this is proper place to refactor.
-     Or, rewrite previous assignments so no refactor is needed.
-
-**plugins**
-  * make  a `user` plugin.
-  * move user logic (./authenticate) from `version` plugin and place
-    in `user`.
-**routeMethod cleanup**
-  * make routeMethod directory. Move route methods out of the route plugin.
-  * place routeMethods in routeMethod directory files.
-    Ex) methods used in the ./authenticate route will be stored in
-    routeMethod/authenticate.js file.
- * The goal is to make plugin route objects extremely readable.
-
-**tree after do refactor**
-```
-lib/
-├── authtoken.js
-├── cache.js
-├── certs
-│   ├── cert.crt
-│   └── key.key
-├── config.js
-├── database.js
-├── index.js
-├── routeMethod
-│   ├── authenticate.js
-│   ├── private.js
-│   └── version.js
-├── start.js
-├── user.js
-└── version.js
-```
-
-[Assignment10 Solution](https://github.com/zoe-1/university-rewrite/commit/f8b6c0de59d14e05d1b70f5e3fe93740f1c1d5b7)
-
-### [Assignment11] hapi & graphql (part1)
- * Implement example from graphi project.
-      project:  https://github.com/geek/graphi
-* Graphi options passed through confidence object
-* test coverage
-* sources: https://github.com/geek/graphi and http://graphql.org
-
-[Assignment11 Solution](https://github.com/zoe-1/university-rewrite/commit/1970999da255bcf40f05d502f92b803dd7b051c1)
-
-### [Assignment12] hapi & graphql (part2)
-
-#### Basic graph schema, queries and data source
-* small data source of several hapi repositories
-    * query accesses plugin data which can return:
-      - id
-      - name
-      - description
-      - related [Array of related repositories]
-    * test coverage
-    * linting ignores graph files.
-
-[Assignment12 Solution](https://github.com/zoe-1/university-rewrite/commit/1db58e9a24452e6a822a49d4ce613ef3299508ff)
-
-### [Assignment13] hapi & graphql (part3)
- * schema interfaces and types:
-      - one interface: Repositories
-      - three types: Hapi, xHapi, Topics.
-    * 'xHapi' repositories are repos not under the hapi umbrella.
-    * graphql searches / queries:
-      - simple searches based on repositories id.
-      - retrieve related repositories
-      - retrieve related repositories of related repositories
-        (friend of friends)
-      - inlineFragraments retrieve topics if repo is xHapi type.
-      - inlineFragraments retrieve topics of related projects if is
-        xHapi type.
-    * Changed data store to be an array of records / objects.
-      - preparing for mutations.
-
-[Assignment13 Solution](https://github.com/zoe-1/university-rewrite/commit/8d59921e084a812c29a51afee0991148cdc7ab63)
-
-### [Assignment14] hapi & graphql (part4)
-* flow added project
-      - https://flow.org
-      - facebook's static type checker
-      - lib/graphi/src files are:
-        * checked by flow
-        * compiled by babel
-        * Note: flow only checks schema related files.
-          Not to be used on hapi server files.
-
-    * Build simple plugins to load graphql schemas and resolvers.
-      - pass server object to modules so `server.app.db` can be
-        accessed by resolver functions.
-    * removed old schema logic
-
-[Assignment14 Solution](https://github.com/zoe-1/university-rewrite/commit/9392ff33cb9523e259fc0120e42d9d177fe1746e)
-
-### [Assignment15] hapi & graphql (part5)
-
-* mutation queries
-* handle requests to update repository name.
-* resolver to make update to data store.
-* tests 100%
-
-[Assignment15 Solution](https://github.com/zoe-1/university-rewrite/commit/3a951343eeaeacba8d4c7ab8435e4fbd423a5259)
-
-### [Assignment16] refactor
-
-* Think about how to implement refactored code earlier so the refactor is not needed.
-* consider using rethinkdb right from the start. However, this would add
-  a new level of complexity on top of learning about hapi and graphql.
-* Does adding graphql to the project distract from learning `hapi`?
-   Based upon talk I hear about `graphql` thought adding it to the project may attract more people.
-
-[university-rewrite](https://github.com/zoe-1/university-rewrite)
-
-
-### Anything else?
-
-[Open an issue](https://github.com/hapijs/university/issues/new), it's free.

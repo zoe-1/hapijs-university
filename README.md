@@ -287,17 +287,8 @@ Please share if you know of other links and resources related to the subject.
 
 [Compare Assignment8 Solution to Assignment7](https://github.com/hapijs/university/compare/v0.1.7...v0.1.8)<br/>
 
-### old [Assignment8]  /authenticate & /private end points
-* build `./authenticate` and `./private` points.
-* use prerequisite extensions to execute authentication logic.
-* Make simple database.js data store to authenticate user records with.
-* Apply default authStrategy to ./private point.
-* No authStrategy for ./authenticate point.
-* Add `{ debug: false }` config for tests.
-  Otherwise, the tests print out hapi-auth-bearer-token error reports.
-  Originally, added in assignment9 but can go here.
 
-[Assignment6 Solution](https://github.com/zoe-1/university-rewrite/commit/739aec80cfb36c503bcf575fa0408170020b0df9)
+[Assignment8 dev Solution](https://github.com/zoe-1/university-rewrite/commit/739aec80cfb36c503bcf575fa0408170020b0df9)
 
 
 ### [Assignment9] tokens cache -- catabox-redis
@@ -307,7 +298,9 @@ cache is configured. When a user successfully authenticates, the auth-bearer-tok
 generated for the session is stored in the cache [catabox-redis](https://github.com/hapijs/catbox-redis).
 Plus, user account data associated with the session is stored in the cache with the token.
 Then, the validateFunction for the auth-bearer-token strategy is modified to use the bearer token cache
-to validate if the received token is valid or not.
+to validate if the received token is valid or not. After the `/authentication` route is built, the token cache
+plugin is written, and the auth strategy is changed, we create the `/private` route which requires a token for an
+administrative user to access route data. 
 
 * **catbox-redis ./lib/tokencache.js**
   - install [redisdb](http://redis.io)
@@ -337,9 +330,11 @@ to validate if the received token is valid or not.
     Otherwise, the tests print out hapi-auth-bearer-token error reports.
     Originally, added in assignment9 but can go here.
 
-[Lesson9 solution]()
+[Lesson9 solution dev](https://github.com/zoe-1/university-dev/compare/v0.1.8...v0.1.9)
+[Lesson9 solution](https://github.com/hapijs/university/compare/v0.1.8...v0.1.9)
 
 [Assignment9 Solution dev](https://github.com/zoe-1/university-rewrite/commit/834a9a13bf566e4f387aa5751eda4927205f46af)
+
 
 ### !!! below still being developed
 

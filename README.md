@@ -285,6 +285,8 @@ Please share if you know of other links and resources related to the subject.
 * generate bearer-token upon successful authentication (cryptiles).
 * Use [Boom](https://www.npmjs.com/package/boom) to return errors.
 
+[Compare Assignment8 Solution to Assignment7](https://github.com/hapijs/university/compare/v0.1.7...v0.1.8)<br/>
+
 ### old [Assignment8]  /authenticate & /private end points
 * build `./authenticate` and `./private` points.
 * use prerequisite extensions to execute authentication logic.
@@ -307,7 +309,7 @@ Plus, user account data associated with the session is stored in the cache with 
 Then, the validateFunction for the auth-bearer-token strategy is modified to use the bearer token cache
 to validate if the received token is valid or not.
 
-* catbox-redis ./lib/tokencache.js
+* **catbox-redis ./lib/tokencache.js**
   - install [redisdb](http://redis.io)
   - configure server to use catbox-redis. <br/>
     See [hapi caching service](https://github.com/hapijs/catbox) and [catbox-redis](https://github.com/hapijs/catbox-redis) documentation.
@@ -315,30 +317,25 @@ to validate if the received token is valid or not.
   - Expire the token after xxxxx time. Set expiresIn: value with server.options.
   - configure scopes ['admin', 'member'] for role based access.
   - configure `.travis.yml` to use the redis server
-* authentication<br/>
+* **authentication**<br/>
   Refactor authentication logic to:
   - pre-empt one user from generating multiple tokens.
   - upon successful authentication set token and user records in the cache.
   - Relevate file: `lib/route-methods/authenticate.js`
-* `lib/authtoken.js`
+* **`lib/authtoken.js`**
   - re-write the `defaultValidateFunc` to uses the catbox-redis cache
     to validate tokens.
-* server configuration options
+* **server configuration options**<br/>
   Configure the application options for `plugin` options to be set along with server options.
   This allows for test configurations to set shorter token expiration times
   so tokens made in previous test do not collide with the current test.
-
-* create ./private point which requires admin scope for access.
+* **create ./private point which requires admin scope for access**
   - Apply default authStrategy to ./private point.
-* tests
+* **tests**
   - write 100% test coverage
   - Add `{ debug: false }` config for tests.
     Otherwise, the tests print out hapi-auth-bearer-token error reports.
     Originally, added in assignment9 but can go here.
-
-* files
-  - authtoken.js
-  - cache.js
 
 [Lesson9 solution]()
 

@@ -281,4 +281,3 @@ administrative user to access route data.
 
 [Lesson9 solution](https://github.com/hapijs/university/compare/v0.1.8...v0.1.9)
 
-

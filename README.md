@@ -16,7 +16,7 @@ Second, create a basic hapi server on port 8000 which responds to /version reque
 `npm install --save hapi`<br/>
 
 
-[compare assignment1 solution to start point](https://github.com/hapijs/university/compare/v0.1.0...v0.1.1)<br/>
+[compare assignment1 solution to start point](https://github.com/hapijs/university/compare/v1.0.0...v1.0.1)<br/>
 [view assignment1 solution](https://github.com/hapijs/university/tree/v0.1.1)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;Utilizes Github's [compare tags](https://help.github.com/articles/comparing-commits-across-time/) feature to view the solution.
 

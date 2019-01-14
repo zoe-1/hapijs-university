@@ -294,7 +294,7 @@ Along with the token, the authenticated user account data is also stored in the 
 are stored. Scope values determine which routes a user can access.
 Second, the validateFunction for the auth-bearer-token strategy is modified to use the bearer token cache to validate received tokens.
 This solves the above mentioned disconnect in our bearer token system.
-Third, we create a `/private` route which requires administrative user privileges (`admin` scope) to access route data.
+Third, we create a `/private` route which requires a valid token and administrative user privileges (`admin` scope) to access route data.
 
 * **auth-bearer-token cache**
   - install [redisdb](http://redis.io)
